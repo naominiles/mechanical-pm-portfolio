@@ -1,0 +1,688 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.demo-shell {
+  background: #E8E4DC;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.demo-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 12px;
+}
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a.active { color: #B07C3A; border-bottom: 0.5px solid #B07C3A; padding-bottom: 2px; }
+.mp-nav-links a.dim { color: #9C9890; }
+
+.mp-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 14px;
+}
+
+/* ── APPLIED AI ── */
+
+.ai-hero {
+  background: #1C1C1A;
+  padding: 72px 48px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px);
+}
+
+.ai-hero-content { position: relative; }
+
+.ai-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 46px;
+  line-height: 1.1;
+  color: #F5F2EC;
+  font-weight: 400;
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.ai-hero-desc {
+  font-size: 16px;
+  color: rgba(245,242,236,0.55);
+  max-width: 520px;
+  line-height: 1.75;
+}
+
+.ai-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.ai-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #B07C3A;
+}
+
+.ai-status-text {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B07C3A;
+}
+
+.ai-body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0;
+}
+
+.ai-main {
+  padding: 56px 56px 64px 48px;
+  border-right: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.ai-section-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 14px;
+}
+
+.ai-main h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.ai-main p {
+  font-size: 15px;
+  color: #3C3C38;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.ai-use-cases {
+  margin: 36px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(28,28,26,0.1);
+  border: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.ai-use-case {
+  background: #F5F2EC;
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.ai-use-case:hover { background: #EDEADF; }
+
+.ai-use-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: #B07C3A;
+  font-weight: 400;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.ai-use-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1C1C1A;
+  margin-bottom: 4px;
+}
+
+.ai-use-body {
+  font-size: 13px;
+  color: #5C5C58;
+  line-height: 1.65;
+}
+
+.ai-divider {
+  height: 0.5px;
+  background: rgba(28,28,26,0.12);
+  margin: 36px 0;
+}
+
+.ai-candid {
+  background: #EDEADF;
+  border-left: 1.5px solid #B07C3A;
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+
+.ai-candid p {
+  font-size: 14px;
+  color: #3C3C38;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.ai-sidebar {
+  padding: 40px 28px;
+}
+
+.ai-sidebar-block {
+  margin-bottom: 32px;
+}
+
+.ai-sidebar-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.ai-tool-list {
+  list-style: none;
+}
+
+.ai-tool-list li {
+  font-size: 13px;
+  color: #5C5C58;
+  padding: 9px 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-tool-status {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #B07C3A;
+}
+
+.ai-tool-status.testing { color: #9C9890; }
+
+.ai-note {
+  font-size: 12px;
+  color: #9C9890;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ── CONTACT ── */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.contact-left {
+  background: #1C1C1A;
+  padding: 64px 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-left-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px);
+}
+
+.contact-left-content { position: relative; }
+
+.contact-left h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
+  color: #F5F2EC;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.contact-left p {
+  font-size: 14px;
+  color: rgba(245,242,236,0.55);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.contact-detail-block {
+  margin-bottom: 24px;
+}
+
+.contact-detail-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 5px;
+}
+
+.contact-detail-value {
+  font-size: 13px;
+  color: rgba(245,242,236,0.65);
+  line-height: 1.5;
+}
+
+.contact-right {
+  padding: 64px 52px;
+  background: #F5F2EC;
+}
+
+.contact-right h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.mp-field {
+  margin-bottom: 20px;
+}
+
+.mp-field label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 7px;
+}
+
+.mp-field input,
+.mp-field select,
+.mp-field textarea {
+  width: 100%;
+  background: #EDEADF;
+  border: 0.5px solid rgba(28,28,26,0.15);
+  padding: 12px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #1C1C1A;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+}
+
+.mp-field input:focus,
+.mp-field select:focus,
+.mp-field textarea:focus {
+  border-color: rgba(176,124,58,0.5);
+  background: #E8E5DB;
+}
+
+.mp-field textarea { resize: none; line-height: 1.6; }
+
+.mp-field select { cursor: pointer; }
+
+.mp-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mp-submit {
+  width: 100%;
+  background: #1C1C1A;
+  border: none;
+  padding: 14px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5F2EC;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s;
+}
+
+.mp-submit:hover { background: #B07C3A; }
+
+.mp-form-note {
+  font-size: 11px;
+  color: #9C9890;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.mp-gc-strip {
+  padding: 24px 48px;
+  background: #EDEADF;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-gc-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  white-space: nowrap;
+}
+
+.mp-gc-names {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.mp-gc-name {
+  font-size: 13px;
+  color: #5C5C58;
+  letter-spacing: 0.04em;
+}
+
+.mp-footer {
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-footer-copy { font-size: 12px; color: #9C9890; }
+</style>
+
+<div class="demo-shell">
+
+  <div>
+    <p class="demo-label">Applied A.I. page</p>
+    <div class="mp-wrap">
+
+      <nav class="mp-nav">
+        <div class="mp-logo">Mechanical PM</div>
+        <ul class="mp-nav-links">
+          <li><a href="#" class="dim">Home</a></li>
+          <li><a href="#" class="dim">Projects</a></li>
+          <li><a href="#" class="dim">Insights</a></li>
+          <li><a href="#" class="active">Applied A.I.</a></li>
+          <li><a href="#" class="dim">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="ai-hero">
+        <div class="ai-hero-bg"></div>
+        <div class="ai-hero-content">
+          <div class="ai-status-row">
+            <div class="ai-status-dot"></div>
+            <span class="ai-status-text">Ongoing experiment</span>
+          </div>
+          <h1>Using A.I. in large-scale mechanical PM. Here's what's actually working.</h1>
+          <p class="ai-hero-desc">This isn't a feature list or a pitch for any particular tool. It's a running account of where I've found AI genuinely useful in the work — and where it still isn't.</p>
+        </div>
+      </div>
+
+      <div class="ai-body">
+
+        <div class="ai-main">
+
+          <p class="ai-section-label">Where I'm using it</p>
+          <h2>Specific workflows, not a general enthusiasm.</h2>
+          <p>
+            Large mechanical projects generate enormous amounts of documentation — submittals, RFIs, meeting minutes, schedules, specs. Most of it is useful. Very little of it gets read carefully. That's the gap where AI tools have started to earn their place in my workflow.
+          </p>
+
+          <div class="ai-use-cases">
+            <div class="ai-use-case">
+              <span class="ai-use-num">01</span>
+              <div>
+                <p class="ai-use-title">Submittal review and cross-referencing</p>
+                <p class="ai-use-body">Comparing submittal data against spec sections to catch discrepancies before they reach the GC. What used to take an afternoon now takes about twenty minutes with a reliable LLM and a good prompt.</p>
+              </div>
+            </div>
+            <div class="ai-use-case">
+              <span class="ai-use-num">02</span>
+              <div>
+                <p class="ai-use-title">Meeting notes to action items</p>
+                <p class="ai-use-body">Turning rough meeting transcripts into structured summaries with owners and deadlines. Mechanical coordination meetings move fast — getting clean documentation out the same day matters.</p>
+              </div>
+            </div>
+            <div class="ai-use-case">
+              <span class="ai-use-num">03</span>
+              <div>
+                <p class="ai-use-title">RFI drafting</p>
+                <p class="ai-use-body">First drafts of RFIs, especially for repetitive conditions. The framing still needs human judgment, but the time to a clean draft is dramatically shorter.</p>
+              </div>
+            </div>
+            <div class="ai-use-case">
+              <span class="ai-use-num">04</span>
+              <div>
+                <p class="ai-use-title">Schedule risk identification</p>
+                <p class="ai-use-body">Feeding schedule data and daily logs into a model to surface potential sequence conflicts before they show up in the field. Still early, but promising.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-candid">
+            <p>I'm not trying to automate judgment — that's not what this is. The value is in reducing the volume of low-grade cognitive work so there's more bandwidth for the decisions that actually require someone who's been on the job site.</p>
+          </div>
+
+          <div class="ai-divider"></div>
+
+          <p class="ai-section-label">Where it still falls short</p>
+          <h2>Honest about the limits.</h2>
+          <p>
+            Field conditions don't translate cleanly into prompts. When something is going wrong on a job site, the information is partial, the timeline is compressed, and the people involved have context that isn't written down anywhere. AI is not useful there yet. It also hallucinates on technical specs with enough confidence to be dangerous if you're not checking the output. I always check the output.
+          </p>
+          <p>
+            This page will keep getting updated as the tools improve and my use of them does too.
+          </p>
+
+        </div>
+
+        <div class="ai-sidebar">
+
+          <div class="ai-sidebar-block">
+            <p class="ai-sidebar-label">Tools in rotation</p>
+            <ul class="ai-tool-list">
+              <li>ChatGPT (GPT-4o) <span class="ai-tool-status">Active</span></li>
+              <li>Claude <span class="ai-tool-status">Active</span></li>
+              <li>Notion AI <span class="ai-tool-status">Active</span></li>
+              <li>Whisper (transcription) <span class="ai-tool-status">Active</span></li>
+              <li>Runway <span class="ai-tool-status testing">Testing</span></li>
+            </ul>
+          </div>
+
+          <div class="ai-sidebar-block">
+            <p class="ai-sidebar-label">Related writing</p>
+            <div style="font-size:13px; color:#5C5C58; line-height:1.9; border-top:0.5px solid rgba(28,28,26,0.08);">
+              <div style="padding:10px 0; border-bottom:0.5px solid rgba(28,28,26,0.08);">Where I'm actually using AI in PM — and where it falls short</div>
+              <div style="padding:10px 0; border-bottom:0.5px solid rgba(28,28,26,0.08);">Submittal review with LLMs: a practical workflow</div>
+            </div>
+          </div>
+
+          <p class="ai-note">This page reflects personal experimentation, not endorsement of any tool or vendor.</p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div>
+    <p class="demo-label">Contact page</p>
+    <div class="mp-wrap">
+
+      <nav class="mp-nav">
+        <div class="mp-logo">Mechanical PM</div>
+        <ul class="mp-nav-links">
+          <li><a href="#" class="dim">Home</a></li>
+          <li><a href="#" class="dim">Projects</a></li>
+          <li><a href="#" class="dim">Insights</a></li>
+          <li><a href="#" style="color:#B07C3A;">Applied A.I.</a></li>
+          <li><a href="#" class="active" style="color:#1C1C1A; border-bottom:0.5px solid #1C1C1A; padding-bottom:2px;">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="contact-layout">
+
+        <div class="contact-left">
+          <div class="contact-left-bg"></div>
+          <div class="contact-left-content">
+            <p class="mp-kicker">Get in touch</p>
+            <h1>Let's talk about the project.</h1>
+            <p>Whether you're a GC, owner's rep, or mechanical contractor looking for PM support — or just want to connect — I'm straightforward to reach. No auto-responder, no intake form maze.</p>
+
+            <div class="contact-detail-block">
+              <p class="contact-detail-label">Based in</p>
+              <p class="contact-detail-value">Phoenix, AZ</p>
+            </div>
+
+            <div class="contact-detail-block">
+              <p class="contact-detail-label">Project types</p>
+              <p class="contact-detail-value">Healthcare &middot; Commercial &middot; Large-scale entertainment</p>
+            </div>
+
+            <div class="contact-detail-block">
+              <p class="contact-detail-label">Project scale</p>
+              <p class="contact-detail-value">Up to $35M mechanical scope</p>
+            </div>
+
+            <div class="contact-detail-block">
+              <p class="contact-detail-label">LinkedIn</p>
+              <p class="contact-detail-value" style="color:#B07C3A;">Zackary Lancaster</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <h2>Send a message.</h2>
+
+          <div class="mp-field-row">
+            <div class="mp-field">
+              <label>First name</label>
+              <input type="text" placeholder="First">
+            </div>
+            <div class="mp-field">
+              <label>Last name</label>
+              <input type="text" placeholder="Last">
+            </div>
+          </div>
+
+          <div class="mp-field">
+            <label>Company</label>
+            <input type="text" placeholder="General contractor, owner, etc.">
+          </div>
+
+          <div class="mp-field">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+
+          <div class="mp-field">
+            <label>Project type</label>
+            <select>
+              <option value="" disabled selected>Select one</option>
+              <option>Healthcare</option>
+              <option>Commercial</option>
+              <option>Entertainment / Venue</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="mp-field">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about the project — scope, location, timeline."></textarea>
+          </div>
+
+          <button class="mp-submit">Send message</button>
+          <p class="mp-form-note">No sales pitch in return. Just a response from Zack.</p>
+        </div>
+
+      </div>
+
+      <div class="mp-gc-strip">
+        <span class="mp-gc-label">General contractors</span>
+        <div class="mp-gc-names">
+          <span class="mp-gc-name">Oakland</span>
+          <span class="mp-gc-name">McCarthy</span>
+          <span class="mp-gc-name">Sundt</span>
+          <span class="mp-gc-name">Robinson</span>
+          <span class="mp-gc-name">CORE</span>
+          <span class="mp-gc-name">DPR</span>
+        </div>
+      </div>
+
+      <footer class="mp-footer">
+        <span class="mp-footer-copy">© 2026 Mechanical Project Manager</span>
+        <span class="mp-footer-copy" style="color:#B07C3A;">Applied A.I. &rarr;</span>
+      </footer>
+
+    </div>
+  </div>
+
+</div>

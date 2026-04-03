@@ -1,0 +1,474 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a.active { color: #1C1C1A; border-bottom: 0.5px solid #1C1C1A; padding-bottom: 2px; }
+.mp-nav-links a.accent { color: #B07C3A; }
+
+.mp-page-header {
+  padding: 64px 48px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 14px;
+}
+
+.mp-page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  line-height: 1.1;
+  color: #1C1C1A;
+  font-weight: 400;
+}
+
+.mp-page-header-desc {
+  font-size: 15px;
+  color: #5C5C58;
+  line-height: 1.75;
+  max-width: 440px;
+  align-self: end;
+}
+
+.mp-filters {
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-filter-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-right: 8px;
+}
+
+.mp-filter-btn {
+  background: none;
+  border: 0.5px solid rgba(28,28,26,0.2);
+  padding: 6px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #5C5C58;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+.mp-filter-btn:hover { background: #EDEADF; color: #1C1C1A; }
+.mp-filter-btn.active { background: #1C1C1A; color: #F5F2EC; border-color: #1C1C1A; }
+
+.mp-projects-section {
+  padding: 48px 48px 64px;
+}
+
+.mp-project-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.mp-project-row:last-child { border-bottom: 0.5px solid rgba(28,28,26,0.12); }
+.mp-project-row:hover { background: #EDEADF; }
+
+.mp-project-row:hover .mp-project-row-photo { background: #CBC8BE; }
+
+.mp-project-row-photo {
+  aspect-ratio: 4/3;
+  background: #D9D6CC;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+
+.mp-photo-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 15px, #1C1C1A 15px, #1C1C1A 15.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, #1C1C1A 15px, #1C1C1A 15.5px);
+}
+
+.mp-project-row-content {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mp-project-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 16px;
+}
+
+.mp-project-row-meta {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 8px;
+}
+
+.mp-project-row-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: #1C1C1A;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.mp-project-row-scope {
+  font-size: 13px;
+  color: #9C9890;
+}
+
+.mp-project-row-tag {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  border: 0.5px solid rgba(176,124,58,0.4);
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.mp-project-row-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.mp-detail-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 4px;
+}
+
+.mp-detail-value {
+  font-size: 14px;
+  color: #3C3C38;
+  line-height: 1.5;
+}
+
+.mp-project-row-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-role-tag {
+  font-size: 12px;
+  color: #5C5C58;
+}
+
+.mp-view-link {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1C1C1A;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-view-link::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 0.5px;
+  background: #1C1C1A;
+}
+
+.mp-stats-bar {
+  background: #1C1C1A;
+  padding: 32px 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+}
+
+.mp-stat {
+  padding: 0 32px 0 0;
+}
+
+.mp-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: #F5F2EC;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.mp-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,0.4);
+}
+
+.mp-gc-strip {
+  padding: 24px 48px;
+  background: #EDEADF;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-gc-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  white-space: nowrap;
+}
+
+.mp-gc-names {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.mp-gc-name {
+  font-size: 13px;
+  color: #5C5C58;
+  letter-spacing: 0.04em;
+}
+</style>
+
+<div class="mp-wrap">
+
+  <nav class="mp-nav">
+    <div class="mp-logo">Mechanical PM</div>
+    <ul class="mp-nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Projects</a></li>
+      <li><a href="#">Insights</a></li>
+      <li><a href="#" class="accent">Applied A.I.</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="mp-page-header">
+    <div>
+      <p class="mp-kicker">Projects portfolio</p>
+      <h1>The work,<br><em>in detail.</em></h1>
+    </div>
+    <p class="mp-page-header-desc">
+      A range of mechanical projects — from hospital energy centers to billion-dollar stadiums. Each one is different. The problems, the teams, the constraints. Here's how some of them went.
+    </p>
+  </div>
+
+  <div class="mp-filters">
+    <span class="mp-filter-label">Filter</span>
+    <button class="mp-filter-btn active">All</button>
+    <button class="mp-filter-btn">Healthcare</button>
+    <button class="mp-filter-btn">Commercial</button>
+    <button class="mp-filter-btn">Entertainment</button>
+  </div>
+
+  <div class="mp-projects-section">
+
+    <div class="mp-project-row">
+      <div class="mp-project-row-photo"><div class="mp-photo-grid"></div></div>
+      <div class="mp-project-row-content">
+        <div>
+          <div class="mp-project-row-top">
+            <div>
+              <p class="mp-project-row-meta">Las Vegas, NV &middot; 2020 &middot; Entertainment</p>
+              <p class="mp-project-row-name">Allegiant Stadium</p>
+              <p class="mp-project-row-scope">$1.9B total &middot; Harris Company &middot; 1.8M sq ft</p>
+            </div>
+            <span class="mp-project-row-tag">Landmark</span>
+          </div>
+          <div class="mp-project-row-body">
+            <div>
+              <p class="mp-detail-label">Role</p>
+              <p class="mp-detail-value">Mechanical PM, Dry-Side — ductwork, grease duct, FCUs, air handlers, PCUs</p>
+            </div>
+            <div>
+              <p class="mp-detail-label">Key challenge</p>
+              <p class="mp-detail-value">Upper bowl ductwork up to 108" diameter with oval fabric duct — the largest fabric duct project in the U.S. at the time</p>
+            </div>
+          </div>
+        </div>
+        <div class="mp-project-row-footer">
+          <span class="mp-role-tag">General Contractor: Oakland &middot; McCarthy</span>
+          <a href="#" class="mp-view-link">View project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mp-project-row">
+      <div class="mp-project-row-photo"><div class="mp-photo-grid"></div></div>
+      <div class="mp-project-row-content">
+        <div>
+          <div class="mp-project-row-top">
+            <div>
+              <p class="mp-project-row-meta">Miami, FL &middot; 2020 &middot; Healthcare</p>
+              <p class="mp-project-row-name">Baptist Hospital East Energy Center</p>
+              <p class="mp-project-row-scope">$80M &middot; Bovis Lend Lease</p>
+            </div>
+            <span class="mp-project-row-tag">Healthcare</span>
+          </div>
+          <div class="mp-project-row-body">
+            <div>
+              <p class="mp-detail-label">Role</p>
+              <p class="mp-detail-value">Mechanical Project Manager — full scope mechanical systems for hospital energy center expansion</p>
+            </div>
+            <div>
+              <p class="mp-detail-label">Key challenge</p>
+              <p class="mp-detail-value">Complex phasing in an active hospital environment with zero-tolerance for system downtime</p>
+            </div>
+          </div>
+        </div>
+        <div class="mp-project-row-footer">
+          <span class="mp-role-tag">General Contractor: Bovis Lend Lease</span>
+          <a href="#" class="mp-view-link">View project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mp-project-row">
+      <div class="mp-project-row-photo"><div class="mp-photo-grid"></div></div>
+      <div class="mp-project-row-content">
+        <div>
+          <div class="mp-project-row-top">
+            <div>
+              <p class="mp-project-row-meta">Miami, FL &middot; Healthcare</p>
+              <p class="mp-project-row-name">Memorial Regional Hospital ED Expansion</p>
+              <p class="mp-project-row-scope">Jackson Health System</p>
+            </div>
+            <span class="mp-project-row-tag">Healthcare</span>
+          </div>
+          <div class="mp-project-row-body">
+            <div>
+              <p class="mp-detail-label">Role</p>
+              <p class="mp-detail-value">Mechanical Project Manager — emergency department expansion, full mechanical scope</p>
+            </div>
+            <div>
+              <p class="mp-detail-label">Key challenge</p>
+              <p class="mp-detail-value">Coordination with active ED operations — construction sequencing around 24/7 patient care</p>
+            </div>
+          </div>
+        </div>
+        <div class="mp-project-row-footer">
+          <span class="mp-role-tag">General Contractor: Sundt</span>
+          <a href="#" class="mp-view-link">View project</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mp-stats-bar">
+    <div class="mp-stat">
+      <p class="mp-stat-num">$35M</p>
+      <p class="mp-stat-label">Largest single project</p>
+    </div>
+    <div class="mp-stat">
+      <p class="mp-stat-num">15+</p>
+      <p class="mp-stat-label">Years experience</p>
+    </div>
+    <div class="mp-stat">
+      <p class="mp-stat-num">6</p>
+      <p class="mp-stat-label">General contractors</p>
+    </div>
+    <div class="mp-stat">
+      <p class="mp-stat-num">2</p>
+      <p class="mp-stat-label">Primary sectors</p>
+    </div>
+  </div>
+
+  <div class="mp-gc-strip">
+    <span class="mp-gc-label">General contractors</span>
+    <div class="mp-gc-names">
+      <span class="mp-gc-name">Oakland</span>
+      <span class="mp-gc-name">McCarthy</span>
+      <span class="mp-gc-name">Sundt</span>
+      <span class="mp-gc-name">Robinson</span>
+      <span class="mp-gc-name">CORE</span>
+      <span class="mp-gc-name">DPR</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.mp-filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.mp-filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanical PM — Phoenix, AZ</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a:hover { color: #1C1C1A; }
+.mp-nav-links a.accent { color: #B07C3A; }
+
+.mp-hero {
+  padding: 80px 48px 60px;
+  max-width: 900px;
+}
+
+.mp-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 20px;
+}
+
+.mp-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px;
+  line-height: 1.1;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 24px;
+  max-width: 680px;
+}
+
+.mp-hero-sub {
+  font-size: 17px;
+  color: #5C5C58;
+  max-width: 520px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.mp-divider {
+  height: 0.5px;
+  background: rgba(28,28,26,0.15);
+  margin: 0 48px;
+}
+
+.mp-section {
+  padding: 60px 48px;
+}
+
+.mp-section-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 32px;
+}
+
+.mp-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(28,28,26,0.12);
+  border: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-project-card {
+  background: #F5F2EC;
+  padding: 32px 28px;
+  position: relative;
+  cursor: default;
+}
+
+.mp-project-card:hover { background: #EDEADF; }
+
+.mp-project-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #DDD9CF;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-project-thumb-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 11px, #1C1C1A 11px, #1C1C1A 12px
+  ),
+  repeating-linear-gradient(
+    90deg, transparent, transparent 11px, #1C1C1A 11px, #1C1C1A 12px
+  );
+}
+
+.mp-project-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 6px;
+}
+
+.mp-project-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.mp-project-meta {
+  font-size: 12px;
+  color: #9C9890;
+}
+
+.mp-project-role {
+  font-size: 12px;
+  color: #B07C3A;
+  margin-top: 10px;
+}
+
+.mp-portfolio-link {
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1C1C1A;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-portfolio-link::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 0.5px;
+  background: #1C1C1A;
+  transition: width 0.2s;
+}
+
+.mp-portfolio-link:hover::after { width: 48px; }
+
+.mp-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+.mp-insights-list {
+  list-style: none;
+}
+
+.mp-insights-list li {
+  padding: 18px 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-insights-list li:first-child { border-top: 0.5px solid rgba(28,28,26,0.12); }
+
+.mp-insight-date {
+  font-size: 11px;
+  color: #9C9890;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.mp-insight-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: #1C1C1A;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.mp-focus-list {
+  list-style: none;
+}
+
+.mp-focus-list li {
+  padding: 12px 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+  font-size: 14px;
+  color: #5C5C58;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-focus-list li:first-child { border-top: 0.5px solid rgba(28,28,26,0.12); }
+
+.mp-focus-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #B07C3A;
+  flex-shrink: 0;
+}
+
+.mp-bio {
+  background: #1C1C1A;
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.mp-bio-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #333330;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-bio-photo-inner {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: repeating-linear-gradient(
+    45deg, transparent, transparent 5px, #F5F2EC 5px, #F5F2EC 6px
+  );
+}
+
+.mp-bio-photo-label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,0.35);
+}
+
+.mp-bio h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: #F5F2EC;
+  font-weight: 400;
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.mp-bio-title {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 20px;
+}
+
+.mp-bio p {
+  font-size: 14px;
+  color: rgba(245,242,236,0.6);
+  line-height: 1.8;
+  max-width: 560px;
+  margin-bottom: 24px;
+}
+
+.mp-bio-link {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5F2EC;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-bio-link::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 0.5px;
+  background: #F5F2EC;
+}
+
+.mp-gc-strip {
+  padding: 28px 48px;
+  background: #EDEADF;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-gc-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  white-space: nowrap;
+}
+
+.mp-gc-names {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.mp-gc-name {
+  font-size: 13px;
+  color: #5C5C58;
+  letter-spacing: 0.04em;
+}
+
+.mp-footer {
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-footer-copy {
+  font-size: 12px;
+  color: #9C9890;
+}
+  </style>
+</head>
+<body>
+
+<div class="mp-wrap">
+
+  <nav class="mp-nav">
+    <a href="index.html" class="mp-logo" style="text-decoration: none; color: #1C1C1A;">Mechanical PM</a>
+    <ul class="mp-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="applied-ai.html" class="accent">Applied A.I.</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="mp-hero">
+    <p class="mp-kicker">Mechanical Project Manager | Las Vegas, NV</p>
+    <h1>Complex projects.<br>Straightforward work.</h1>
+    <p class="mp-hero-sub">
+      What I do, what I've built, and how I think about the work. No sales pitch.
+    </p>
+  </section>
+
+  <div class="mp-divider"></div>
+
+  <section class="mp-section">
+    <p class="mp-section-label">Selected projects</p>
+    <div class="mp-projects">
+
+      <div class="mp-project-card">
+        <div class="mp-project-thumb">
+          <div class="mp-project-thumb-lines"></div>
+        </div>
+        <p class="mp-project-label">Las Vegas, NV | 2020</p>
+        <p class="mp-project-name">Allegiant Stadium</p>
+        <p class="mp-project-meta">$1.9B | 1.8M sq ft | Harris Company</p>
+        <p class="mp-project-role">Mechanical PM, Dry-Side</p>
+      </div>
+
+      <div class="mp-project-card">
+        <div class="mp-project-thumb">
+          <div class="mp-project-thumb-lines"></div>
+        </div>
+        <p class="mp-project-label">Miami, FL | 2020</p>
+        <p class="mp-project-name">Baptist Hospital East Energy Center</p>
+        <p class="mp-project-meta">$80M | Healthcare | Bovis Lend Lease</p>
+        <p class="mp-project-role">Mechanical PM</p>
+      </div>
+
+      <div class="mp-project-card">
+        <div class="mp-project-thumb">
+          <div class="mp-project-thumb-lines"></div>
+        </div>
+        <p class="mp-project-label">Miami, FL</p>
+        <p class="mp-project-name">Memorial Regional Hospital ED Expansion</p>
+        <p class="mp-project-meta">Healthcare | Jackson Health System</p>
+        <p class="mp-project-role">Mechanical PM</p>
+      </div>
+
+    </div>
+    <a href="projects.html" class="mp-portfolio-link">View full portfolio</a>
+  </section>
+
+  <div class="mp-divider"></div>
+
+  <section class="mp-section">
+    <div class="mp-two-col">
+
+      <div>
+        <p class="mp-section-label">Innovation &amp; Insights</p>
+        <p style="font-size:14px; color:#5C5C58; margin-bottom:28px; line-height:1.7;">
+          Notes on field problem solving, process, and what actually happens on large mechanical projects.
+        </p>
+        <ul class="mp-insights-list">
+          <li>
+            <p class="mp-insight-date">Link to writing</p>
+            <p class="mp-insight-title">Article title goes here</p>
+          </li>
+          <li>
+            <p class="mp-insight-date">Link to writing</p>
+            <p class="mp-insight-title">Article title goes here</p>
+          </li>
+          <li>
+            <p class="mp-insight-date">Link to writing</p>
+            <p class="mp-insight-title">Article title goes here</p>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="mp-section-label">Focus areas</p>
+        <ul class="mp-focus-list">
+          <li><span class="mp-focus-dot"></span>Project execution</li>
+          <li><span class="mp-focus-dot"></span>Field problem solving</li>
+          <li><span class="mp-focus-dot"></span>Process improvement</li>
+          <li><span class="mp-focus-dot"></span>Team development</li>
+          <li><span class="mp-focus-dot"></span>Client relationships</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="mp-bio">
+    <div class="mp-bio-photo">
+      <img src="zackary-lancaster.png" alt="Zack Lancaster" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div>
+      <h2>Zack Lancaster</h2>
+      <p class="mp-bio-title">Mechanical Project Manager</p>
+      <p>
+        I've managed mechanical projects up to $35M across healthcare, commercial, and large-scale entertainment construction.
+        The work is specific, demanding, and rarely goes exactly as planned. That's the part I find most interesting.
+      </p>
+      <a href="about.html" class="mp-bio-link">About</a>
+    </div>
+  </div>
+
+  <div class="mp-gc-strip">
+    <span class="mp-gc-label">General contractors</span>
+    <div class="mp-gc-names">
+      <span class="mp-gc-name">Oakland</span>
+      <span class="mp-gc-name">McCarthy</span>
+      <span class="mp-gc-name">Sundt</span>
+      <span class="mp-gc-name">Robinson</span>
+      <span class="mp-gc-name">CORE</span>
+      <span class="mp-gc-name">DPR</span>
+    </div>
+  </div>
+
+  <footer class="mp-footer">
+    <span class="mp-footer-copy">© 2026 Mechanical Project Manager</span>
+    <span class="mp-footer-copy" style="color:#B07C3A;">Applied A.I. &rarr;</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

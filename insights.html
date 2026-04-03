@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights — Mechanical PM</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a.active { color: #1C1C1A; border-bottom: 0.5px solid #1C1C1A; padding-bottom: 2px; }
+.mp-nav-links a.accent { color: #B07C3A; }
+
+.mp-kicker {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 12px;
+}
+
+.mp-page-header {
+  padding: 48px 40px 36px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-page-header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  line-height: 1.1;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.mp-page-header-desc {
+  font-size: 14px;
+  color: #5C5C58;
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+.mp-insights-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 0;
+}
+
+.mp-insights-main {
+  border-right: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-featured {
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-featured-image {
+  width: 100%;
+  aspect-ratio: 16/6;
+  background: #C8C4BA;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-feat-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 18px, #1C1C1A 18px, #1C1C1A 18.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 18px, #1C1C1A 18px, #1C1C1A 18.5px);
+}
+
+.mp-featured-label {
+  position: absolute;
+  top: 16px; left: 20px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,0.7);
+  background: rgba(28,28,26,0.35);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.mp-featured-body {
+  padding: 28px 32px;
+}
+
+.mp-article-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 8px;
+}
+
+.mp-article-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: #1C1C1A;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.mp-article-excerpt {
+  font-size: 13px;
+  color: #5C5C58;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.mp-article-meta {
+  font-size: 11px;
+  color: #9C9890;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-meta-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: #C8C4BA;
+  flex-shrink: 0;
+}
+
+.mp-read-link {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1C1C1A;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-read-link::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 0.5px;
+  background: #1C1C1A;
+}
+
+.mp-article-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-article-row:hover { background: #EDEADF; }
+
+.mp-article-thumb {
+  aspect-ratio: 1;
+  background: #D9D6CC;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-thumb-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 10px, #1C1C1A 10px, #1C1C1A 10.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 10px, #1C1C1A 10px, #1C1C1A 10.5px);
+}
+
+.mp-article-row-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mp-article-row-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  color: #1C1C1A;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.mp-article-row-meta {
+  font-size: 10px;
+  color: #9C9890;
+  letter-spacing: 0.04em;
+}
+
+.mp-sidebar-ins {
+  padding: 28px 24px;
+}
+
+.mp-sidebar-section {
+  margin-bottom: 32px;
+}
+
+.mp-sidebar-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mp-topic-pill {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5C5C58;
+  border: 0.5px solid rgba(28,28,26,0.2);
+  padding: 5px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.mp-topic-pill:hover, .mp-topic-pill.active {
+  background: #1C1C1A;
+  color: #F5F2EC;
+  border-color: #1C1C1A;
+}
+
+.mp-ai-promo {
+  background: #1C1C1A;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.mp-ai-promo-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 8px;
+}
+
+.mp-ai-promo p {
+  font-size: 12px;
+  color: rgba(245,242,236,0.6);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.mp-ai-promo a {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5F2EC;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mp-ai-promo a::after {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 0.5px;
+  background: #F5F2EC;
+}
+
+.mp-gc-strip {
+  padding: 24px 48px;
+  background: #EDEADF;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-gc-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  white-space: nowrap;
+}
+
+.mp-gc-names {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.mp-gc-name {
+  font-size: 13px;
+  color: #5C5C58;
+  letter-spacing: 0.04em;
+}
+
+.mp-footer {
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-footer-copy {
+  font-size: 12px;
+  color: #9C9890;
+}
+  </style>
+</head>
+<body>
+
+<div class="mp-wrap">
+
+  <nav class="mp-nav">
+    <a href="index.html" class="mp-logo" style="text-decoration: none; color: #1C1C1A;">Mechanical PM</a>
+    <ul class="mp-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html" class="active">Insights</a></li>
+      <li><a href="applied-ai.html" class="accent">Applied A.I.</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="mp-page-header">
+    <p class="mp-kicker">Insights &amp; writing</p>
+    <h1>Notes on the work.</h1>
+    <p class="mp-page-header-desc">Field problem solving, process, team dynamics, and what actually happens on large mechanical projects. No content strategy here. Just things worth writing down.</p>
+  </div>
+
+  <div class="mp-insights-layout">
+    <div class="mp-insights-main">
+
+      <div class="mp-featured">
+        <div class="mp-featured-image">
+          <div class="mp-feat-grid"></div>
+          <span class="mp-featured-label">Featured</span>
+        </div>
+        <div class="mp-featured-body">
+          <p class="mp-article-tag">Process improvement</p>
+          <p class="mp-article-title">What 108-inch fabric duct taught me about managing the unknown</p>
+          <p class="mp-article-excerpt">When the spec calls for something that hasn't been built at this scale before, the submittal process becomes a negotiation. How we worked through it on Allegiant Stadium.</p>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <p class="mp-article-meta">
+              March 2024
+              <span class="mp-meta-dot"></span>
+              6 min read
+            </p>
+            <a href="#" class="mp-read-link">Read</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mp-article-list">
+
+        <div class="mp-article-row">
+          <div class="mp-article-thumb"><div class="mp-thumb-grid"></div></div>
+          <div class="mp-article-row-body">
+            <div>
+              <p class="mp-article-tag" style="font-size:10px;">Field problem solving</p>
+              <p class="mp-article-row-title">How phasing works in an active hospital, and why it's always more complicated than the plan</p>
+            </div>
+            <p class="mp-article-row-meta">Jan 2024 | 5 min</p>
+          </div>
+        </div>
+
+        <div class="mp-article-row">
+          <div class="mp-article-thumb"><div class="mp-thumb-grid"></div></div>
+          <div class="mp-article-row-body">
+            <div>
+              <p class="mp-article-tag" style="font-size:10px;">Team development</p>
+              <p class="mp-article-row-title">The difference between managing a schedule and managing a team</p>
+            </div>
+            <p class="mp-article-row-meta">Nov 2023 | 4 min</p>
+          </div>
+        </div>
+
+        <div class="mp-article-row">
+          <div class="mp-article-thumb"><div class="mp-thumb-grid"></div></div>
+          <div class="mp-article-row-body">
+            <div>
+              <p class="mp-article-tag" style="font-size:10px;">Applied A.I.</p>
+              <p class="mp-article-row-title">Where I'm actually using AI in project management, and where it still falls short</p>
+            </div>
+            <p class="mp-article-row-meta">Oct 2023 | 7 min</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="mp-sidebar-ins">
+
+      <div class="mp-sidebar-section">
+        <p class="mp-sidebar-label">Topics</p>
+        <div class="mp-topic-pills">
+          <span class="mp-topic-pill active">All</span>
+          <span class="mp-topic-pill">Process</span>
+          <span class="mp-topic-pill">Field</span>
+          <span class="mp-topic-pill">Teams</span>
+          <span class="mp-topic-pill">A.I.</span>
+          <span class="mp-topic-pill">Healthcare</span>
+        </div>
+      </div>
+
+      <div class="mp-sidebar-section">
+        <p class="mp-sidebar-label">Focus areas</p>
+        <div style="font-size:12px; color:#5C5C58; line-height:2;">
+          Project execution<br>
+          Field problem solving<br>
+          Process improvement<br>
+          Team development<br>
+          Client relationships
+        </div>
+      </div>
+
+      <div class="mp-ai-promo">
+        <p class="mp-ai-promo-label">Applied A.I.</p>
+        <p>How I'm incorporating AI tools into large-scale mechanical PM work.</p>
+        <a href="applied-ai.html">Explore</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mp-gc-strip">
+    <span class="mp-gc-label">General contractors</span>
+    <div class="mp-gc-names">
+      <span class="mp-gc-name">Oakland</span>
+      <span class="mp-gc-name">McCarthy</span>
+      <span class="mp-gc-name">Sundt</span>
+      <span class="mp-gc-name">Robinson</span>
+      <span class="mp-gc-name">CORE</span>
+      <span class="mp-gc-name">DPR</span>
+    </div>
+  </div>
+
+  <footer class="mp-footer">
+    <span class="mp-footer-copy">© 2026 Mechanical Project Manager</span>
+    <span class="mp-footer-copy" style="color:#B07C3A;">Applied A.I. &rarr;</span>
+  </footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.mp-topic-pill').forEach(pill => {
+  pill.addEventListener('click', function() {
+    const parent = this.closest('.mp-topic-pills') || this.parentElement;
+    parent.querySelectorAll('.mp-topic-pill').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

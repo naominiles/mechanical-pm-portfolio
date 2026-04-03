@@ -1,0 +1,482 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a.active { color: #1C1C1A; border-bottom: 0.5px solid #1C1C1A; padding-bottom: 2px; }
+.mp-nav-links a.accent { color: #B07C3A; }
+
+.mp-breadcrumb {
+  padding: 16px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #9C9890;
+  letter-spacing: 0.04em;
+}
+
+.mp-breadcrumb a { text-decoration: none; color: #9C9890; }
+.mp-breadcrumb a:hover { color: #1C1C1A; }
+.mp-breadcrumb-sep { opacity: 0.4; }
+.mp-breadcrumb-current { color: #5C5C58; }
+
+.mp-hero-image {
+  width: 100%;
+  aspect-ratio: 21/7;
+  background: #C8C4BA;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-hero-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 24px, #1C1C1A 24px, #1C1C1A 24.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 24px, #1C1C1A 24px, #1C1C1A 24.5px);
+}
+
+.mp-hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 48px;
+  background: linear-gradient(to top, rgba(28,28,26,0.55) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.mp-hero-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,242,236,0.6);
+  margin-bottom: 6px;
+}
+
+.mp-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: #F5F2EC;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.mp-hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  border: 0.5px solid rgba(176,124,58,0.5);
+  padding: 6px 14px;
+  border-radius: 2px;
+  align-self: flex-end;
+  background: rgba(28,28,26,0.3);
+}
+
+.mp-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  align-items: start;
+}
+
+.mp-main {
+  padding: 52px 56px 64px 48px;
+  border-right: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-section-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 14px;
+}
+
+.mp-main h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.mp-main p {
+  font-size: 15px;
+  color: #3C3C38;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.mp-divider-thin {
+  height: 0.5px;
+  background: rgba(28,28,26,0.12);
+  margin: 40px 0;
+}
+
+.mp-challenge-block {
+  background: #1C1C1A;
+  padding: 32px 36px;
+  margin: 40px 0;
+}
+
+.mp-challenge-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 12px;
+}
+
+.mp-challenge-block p {
+  font-size: 15px;
+  color: rgba(245,242,236,0.75);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.mp-photo-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(28,28,26,0.12);
+  margin: 40px 0;
+}
+
+.mp-photo-thumb {
+  aspect-ratio: 4/3;
+  background: #D9D6CC;
+  position: relative;
+  overflow: hidden;
+}
+
+.mp-photo-thumb-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 14px, #1C1C1A 14px, #1C1C1A 14.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 14px, #1C1C1A 14px, #1C1C1A 14.5px);
+}
+
+.mp-photo-caption {
+  font-size: 11px;
+  color: #9C9890;
+  margin-top: -28px;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.mp-pull-quote {
+  border-left: 1.5px solid #B07C3A;
+  padding: 4px 0 4px 28px;
+  margin: 36px 0;
+}
+
+.mp-pull-quote p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: #1C1C1A;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.mp-pull-quote cite {
+  font-size: 12px;
+  color: #9C9890;
+  letter-spacing: 0.06em;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.mp-sidebar {
+  padding: 40px 32px;
+  position: sticky;
+  top: 0;
+}
+
+.mp-spec-block {
+  margin-bottom: 36px;
+}
+
+.mp-spec-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 6px;
+}
+
+.mp-spec-value {
+  font-size: 14px;
+  color: #1C1C1A;
+  line-height: 1.5;
+}
+
+.mp-spec-value.large {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #1C1C1A;
+}
+
+.mp-spec-divider {
+  height: 0.5px;
+  background: rgba(28,28,26,0.12);
+  margin: 20px 0;
+}
+
+.mp-scope-list {
+  list-style: none;
+}
+
+.mp-scope-list li {
+  font-size: 13px;
+  color: #5C5C58;
+  padding: 8px 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.08);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mp-scope-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #B07C3A;
+  flex-shrink: 0;
+}
+
+.mp-nav-projects {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-nav-proj-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 16px;
+}
+
+.mp-nav-proj-item {
+  padding: 14px 0;
+  border-bottom: 0.5px solid rgba(28,28,26,0.08);
+  cursor: default;
+}
+
+.mp-nav-proj-item:hover .mp-nav-proj-name { color: #B07C3A; }
+
+.mp-nav-proj-sector {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C9890;
+  margin-bottom: 3px;
+}
+
+.mp-nav-proj-name {
+  font-size: 13px;
+  color: #3C3C38;
+  transition: color 0.15s;
+  line-height: 1.3;
+}
+</style>
+
+<div class="mp-wrap">
+
+  <nav class="mp-nav">
+    <div class="mp-logo">Mechanical PM</div>
+    <ul class="mp-nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Projects</a></li>
+      <li><a href="#">Insights</a></li>
+      <li><a href="#" class="accent">Applied A.I.</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="mp-breadcrumb">
+    <a href="#">Projects</a>
+    <span class="mp-breadcrumb-sep">/</span>
+    <span class="mp-breadcrumb-current">Allegiant Stadium</span>
+  </div>
+
+  <div class="mp-hero-image">
+    <div class="mp-hero-grid"></div>
+    <div class="mp-hero-overlay">
+      <div>
+        <p class="mp-hero-label">Las Vegas, NV &middot; 2020 &middot; Entertainment</p>
+        <p class="mp-hero-title">Allegiant Stadium</p>
+      </div>
+      <span class="mp-hero-tag">Landmark</span>
+    </div>
+  </div>
+
+  <div class="mp-content">
+
+    <div class="mp-main">
+
+      <p class="mp-section-label">Overview</p>
+      <h2>The largest fabric duct project in the United States.</h2>
+      <p>
+        Allegiant Stadium is a $1.9 billion, 1.8 million square foot domed stadium in Las Vegas — home of the Raiders. The mechanical scope on the dry-side alone was a substantial undertaking: ductwork, grease duct, fan coil units, air handlers, and process cooling units throughout the bowl and concourse levels.
+      </p>
+      <p>
+        The upper bowl ductwork ran up to 108 inches in diameter using oval fabric duct — a system specification that had never been executed at this scale in the U.S. Coordinating fabrication, delivery sequencing, and installation in an active construction environment with hundreds of concurrent trades required close coordination and a lot of problem solving in real time.
+      </p>
+
+      <div class="mp-challenge-block">
+        <p class="mp-challenge-label">Key challenge</p>
+        <p>
+          Fabric duct at 108" diameter has essentially no precedent in U.S. construction. The manufacturer, the GC, and the design team were all navigating unfamiliar territory simultaneously. Maintaining schedule while working through submittal revisions, lead times, and field fit conditions required staying well ahead of the install sequence.
+        </p>
+      </div>
+
+      <p class="mp-section-label">In the field</p>
+      <h2>Coordinating across a $1.9B job site.</h2>
+      <p>
+        At peak construction, Allegiant Stadium had thousands of workers on site across dozens of subcontractors. The mechanical dry-side scope had to weave through structural steel, electrical rough-in, and architectural finishes on an aggressive schedule. Most of the challenge wasn't the ductwork itself — it was sequencing and communication.
+      </p>
+
+      <div class="mp-photo-grid-2col">
+        <div class="mp-photo-thumb"><div class="mp-photo-thumb-grid"></div></div>
+        <div class="mp-photo-thumb"><div class="mp-photo-thumb-grid"></div></div>
+      </div>
+      <p class="mp-photo-caption">Upper bowl installation &middot; Fabric duct, oval section, 108" diameter</p>
+
+      <p>
+        The fabric duct system required custom support rigging designed around the bowl geometry. Standard hangar details didn't apply. Working with the structural team to develop field-verified support conditions — without impacting the finish schedule — was one of the more satisfying parts of the project.
+      </p>
+
+      <div class="mp-pull-quote">
+        <p>"Zack did a tremendous job on a very challenging project. He is a very capable project manager that I would undoubtedly work with again."</p>
+        <cite>Chris Dusivitch &mdash; Bovis Lend Lease</cite>
+      </div>
+
+      <div class="mp-divider-thin"></div>
+
+      <p class="mp-section-label">Outcome</p>
+      <h2>Completed on schedule. First of its kind.</h2>
+      <p>
+        The dry-side mechanical scope was completed in 2020. The fabric duct installation remains the largest of its kind in the United States. The stadium opened to full capacity for the 2020 NFL season.
+      </p>
+
+    </div>
+
+    <div class="mp-sidebar">
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Total project value</p>
+        <p class="mp-spec-value large">$1.9B</p>
+      </div>
+
+      <div class="mp-spec-divider"></div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Location</p>
+        <p class="mp-spec-value">Las Vegas, NV</p>
+      </div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Completed</p>
+        <p class="mp-spec-value">2020</p>
+      </div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Size</p>
+        <p class="mp-spec-value">1.8 million sq ft</p>
+      </div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Mechanical contractor</p>
+        <p class="mp-spec-value">Harris Company</p>
+      </div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">General contractor</p>
+        <p class="mp-spec-value">Oakland &middot; McCarthy (JV)</p>
+      </div>
+
+      <div class="mp-spec-block">
+        <p class="mp-spec-label">Role</p>
+        <p class="mp-spec-value">Mechanical Project Manager, Dry-Side</p>
+      </div>
+
+      <div class="mp-spec-divider"></div>
+
+      <p class="mp-spec-label">Mechanical scope</p>
+      <ul class="mp-scope-list">
+        <li><span class="mp-scope-dot"></span>Ductwork (up to 108" diameter)</li>
+        <li><span class="mp-scope-dot"></span>Oval fabric duct system</li>
+        <li><span class="mp-scope-dot"></span>Grease duct</li>
+        <li><span class="mp-scope-dot"></span>Fan coil units (FCUs)</li>
+        <li><span class="mp-scope-dot"></span>Air handlers</li>
+        <li><span class="mp-scope-dot"></span>Process cooling units (PCUs)</li>
+      </ul>
+
+      <div class="mp-nav-projects">
+        <p class="mp-nav-proj-label">Other projects</p>
+        <div class="mp-nav-proj-item">
+          <p class="mp-nav-proj-sector">Healthcare &middot; Miami, FL</p>
+          <p class="mp-nav-proj-name">Baptist Hospital East Energy Center</p>
+        </div>
+        <div class="mp-nav-proj-item">
+          <p class="mp-nav-proj-sector">Healthcare &middot; Miami, FL</p>
+          <p class="mp-nav-proj-name">Memorial Regional Hospital ED Expansion</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

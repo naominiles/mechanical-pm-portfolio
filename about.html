@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Mechanical PM</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.mp-wrap {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: #F5F2EC;
+  color: #1C1C1A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.mp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  border-bottom: 0.5px solid rgba(28,28,26,0.15);
+}
+
+.mp-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: #1C1C1A;
+}
+
+.mp-nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.mp-nav-links a {
+  text-decoration: none;
+  color: #5C5C58;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mp-nav-links a:hover { color: #1C1C1A; }
+.mp-nav-links a.accent { color: #B07C3A; }
+
+.about-hero {
+  background: #1C1C1A;
+  padding: 80px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, #F5F2EC 28px, #F5F2EC 28.5px);
+}
+
+.about-hero-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #333330;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-text h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  color: #F5F2EC;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.about-hero-text .subtitle {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 28px;
+}
+
+.about-hero-text p {
+  font-size: 16px;
+  color: rgba(245,242,236,0.65);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.about-content {
+  padding: 64px 48px;
+  max-width: 900px;
+}
+
+.about-section {
+  margin-bottom: 56px;
+}
+
+.about-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.about-section p {
+  font-size: 15px;
+  color: #3C3C38;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-list {
+  list-style: none;
+  margin: 24px 0;
+}
+
+.about-list li {
+  padding: 10px 0 10px 28px;
+  position: relative;
+  font-size: 15px;
+  color: #3C3C38;
+  line-height: 1.7;
+}
+
+.about-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #B07C3A;
+}
+
+.project-highlight {
+  background: #EDEADF;
+  padding: 32px 36px;
+  margin: 32px 0;
+  border-left: 2px solid #B07C3A;
+}
+
+.project-highlight h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: #1C1C1A;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.project-highlight ul {
+  list-style: none;
+}
+
+.project-highlight li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  font-size: 14px;
+  color: #5C5C58;
+}
+
+.project-highlight li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #B07C3A;
+}
+
+.personal-section {
+  background: #1C1C1A;
+  padding: 40px 36px;
+  margin: 32px 0;
+}
+
+.personal-section h3 {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #B07C3A;
+  margin-bottom: 12px;
+}
+
+.personal-section p {
+  font-size: 15px;
+  color: rgba(245,242,236,0.65);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1C1C1A;
+  text-decoration: none;
+  border: 0.5px solid #1C1C1A;
+  padding: 16px 32px;
+  transition: all 0.2s;
+}
+
+.cta-link:hover {
+  background: #1C1C1A;
+  color: #F5F2EC;
+}
+
+.cta-link::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 0.5px;
+  background: currentColor;
+}
+
+.mp-gc-strip {
+  padding: 24px 48px;
+  background: #EDEADF;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 0.5px solid rgba(28,28,26,0.1);
+}
+
+.mp-gc-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9C9890;
+  white-space: nowrap;
+}
+
+.mp-gc-names {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.mp-gc-name {
+  font-size: 13px;
+  color: #5C5C58;
+  letter-spacing: 0.04em;
+}
+
+.mp-footer {
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid rgba(28,28,26,0.12);
+}
+
+.mp-footer-copy {
+  font-size: 12px;
+  color: #9C9890;
+}
+  </style>
+</head>
+<body>
+
+<div class="mp-wrap">
+
+  <nav class="mp-nav">
+    <a href="index.html" class="mp-logo" style="text-decoration: none; color: #1C1C1A;">Mechanical PM</a>
+    <ul class="mp-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="insights.html">Insights</a></li>
+      <li><a href="applied-ai.html" class="accent">Applied A.I.</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-content">
+      <div class="about-photo">
+        <img src="zackary-lancaster.png" alt="Zackary Lancaster">
+      </div>
+      <div class="about-hero-text">
+        <h1>Zack Lancaster</h1>
+        <p class="subtitle">Mechanical Project Manager | Las Vegas, NV</p>
+        <p>Over 15 years of experience managing mechanical projects ranging from $200K to $35M across healthcare, commercial, and large-scale entertainment construction.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-content">
+
+    <div class="about-section">
+      <h2>Background</h2>
+      <p>I started with a bachelor's degree in construction engineering, graduating cum laude. Throughout my career, I've prioritized teamwork, operational efficiency, and client satisfaction. I've managed projects of varying scales and complexities by working closely with subcontractors, general contractors, superintendents, architects, and engineers to achieve project milestones.</p>
+    </div>
+
+    <div class="about-section">
+      <h2>Key expertise</h2>
+      <ul class="about-list">
+        <li>Effective communication with superintendents and foremen, implementing systems to enhance labor productivity and reduce costs</li>
+        <li>Coordinating projects with subcontractors, engineers, and general contractors to meet project schedules</li>
+        <li>Managing project control systems, including budget creation, scheduling, expense and labor hour tracking, and payment approvals</li>
+        <li>Estimating and preparing change orders for scopes of work</li>
+        <li>Soliciting and evaluating bids from material suppliers and subcontractors, and awarding contracts</li>
+        <li>Collaborating with estimators to develop comprehensive scopes of work for subcontractors and vendors</li>
+        <li>Overseeing submittal preparation, review, and tracking processes</li>
+        <li>Conducting thorough site visits and inspections to ensure project success and exceed customer expectations</li>
+      </ul>
+    </div>
+
+    <div class="project-highlight">
+      <h3>Notable projects</h3>
+      <ul>
+        <li>Raiders Football Stadium, Las Vegas, NV</li>
+        <li>West Kendall Baptist Hospital, Miami, FL</li>
+        <li>Baptist Hospital of Miami ED Addition</li>
+        <li>Baptist Hospital of Miami East Energy Center</li>
+        <li>Kendall Regional Medical Center</li>
+      </ul>
+      <p style="margin-top: 20px; font-size: 14px; color: #5C5C58;">See the full portfolio <a href="projects.html" style="color: #B07C3A; text-decoration: none;">here</a>.</p>
+    </div>
+
+    <div class="about-section">
+      <p>My project management skills were instrumental in the construction of the Raiders football stadium in Las Vegas. My proficiency in handling complex projects and fostering cohesive teams made me an asset to this high-profile project, demonstrating my ability to coordinate seamlessly with stakeholders and ensure success.</p>
+    </div>
+
+    <div class="personal-section">
+      <h3>Personal interests</h3>
+      <p>Beyond professional work, I enjoy spending quality time with family and friends, exploring new destinations through travel, participating in CrossFit competitions, and remodeling my 1950s mid-century home in the vibrant Arts District.</p>
+    </div>
+
+    <div class="cta-section">
+      <a href="contact.html" class="cta-link">Get in touch</a>
+    </div>
+
+  </div>
+
+  <div class="mp-gc-strip">
+    <span class="mp-gc-label">General contractors</span>
+    <div class="mp-gc-names">
+      <span class="mp-gc-name">Oakland</span>
+      <span class="mp-gc-name">McCarthy</span>
+      <span class="mp-gc-name">Sundt</span>
+      <span class="mp-gc-name">Robinson</span>
+      <span class="mp-gc-name">CORE</span>
+      <span class="mp-gc-name">DPR</span>
+    </div>
+  </div>
+
+  <footer class="mp-footer">
+    <span class="mp-footer-copy">© 2026 Mechanical Project Manager</span>
+    <span class="mp-footer-copy" style="color:#B07C3A;">Applied A.I. &rarr;</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
