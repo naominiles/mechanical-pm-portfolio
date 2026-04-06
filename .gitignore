@@ -11,3 +11,16 @@ Thumbs.db
 # Temporary files
 *.tmp
 *~
+
+# WordPress Docker files
+wordpress/
+db_data/
+
+# WordPress
+wp-config.php
+.htaccess
+
+# Logs
+*.log
+error_log
+debug.log
