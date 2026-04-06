@@ -58,6 +58,11 @@ add_action( 'wp_enqueue_scripts', 'mechanical_pm_scripts' );
 require get_template_directory() . '/inc/custom-post-types.php';
 
 /**
+ * Include ACF fields
+ */
+require get_template_directory() . '/inc/acf-fields.php';
+
+/**
  * Custom navigation walker (optional - for adding active class)
  */
 class Mechanical_PM_Walker_Nav_Menu extends Walker_Nav_Menu {
